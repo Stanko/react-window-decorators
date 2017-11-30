@@ -9,6 +9,8 @@ dimensions, orientation and breakpoint* to your component's props.
 If you are not sure what it does, play with the
 [demo](https://stanko.github.io/react-window-decorators/).
 
+All modern browsers and IE10+.
+
 ## Usage
 
 Library is made as ES module, and you should use it with a module bundler (tested with webpack).

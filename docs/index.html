@@ -5,28 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
   <link rel="stylesheet" href="https://stanko.github.io/skyblue/css/skyblue.css">
-  <title>Keen - React component boilerplate</title>
+  <title>React Window Decorators</title>
 <link href="style.css" rel="stylesheet"></head>
 <body>
-  <div class="Header">
-    <div class="Content">
+  <div class="header">
+    <div class="container">
       <a href="https://stanko.github.io">My blog</a>
-      <a href="https://github.com/Stanko/keen">GitHub</a>
+      <a href="https://github.com/Stanko/react-window-decorators">GitHub</a>
+      <a href="https://www.npmjs.com/package/react-window-decorators">npm</a>
     </div>
   </div>
 
-  <div>
-    <img
-      src="assets/keen.png"
-      alt="Keen - React component boilerplate"
-      class="KeenImage"
-    />
-    <h3>Keen</h3>
-    <a href="#demo">Demo</a>
+  <div class="container padding-bottom-100">
+    <h1>React Window Decorators</h1>
+    <p>
+      This is demo for <a href="https://www.npmjs.com/package/react-window-decorators">react-window-decorators</a>.
+      Library includes two decorators (higher order components):
+    </p>
+    <ul>
+      <li>
+        <code>withScroll</code> -
+        tracks window scroll and injects <code>scrollPosition</code> prop to your component.
+      </li>
+      <li>
+        <code>withWindow</code> -
+        tracks window <code>dimensions</code> (width/height), <code>orientation</code> and <code>breakpoint</code>*
+        and injects them all as props to your component.
+      </li>
+      <small>* breakpoint configuration must be passed to it</small>
+    </ul>
+    <p>
+      More detailed readme and documentation are available on <a href="https://github.com/Stanko/react-window-decorators">GitHub</a>.
+    </p>
+    <h3>Demo</h3>
+    <p>Try scrollig or resizing your window</p>
+    <div class="demo" id="demo">
+    </div>
+    <p>Breakpoints data used</p>
+<pre>
+const BREAKPOINTS = [
+  {
+    name: 'small',
+    media: '(min-width: 0)',
+  },
+  {
+    name: 'medium',
+    media: '(min-width: 600px)',
+  },
+  {
+    name: 'large',
+    media: '(min-width: 1000px)',
+  },
+  {
+    name: 'xlarge',
+    media: '(min-width: 1500px)',
+  },
+  {
+    name: 'xxlarge',
+    media: '(min-width: 2000px)',
+  },
+  {
+    name: 'xxxlarge',
+    media: '(min-width: 2800px)',
+  },
+];
+</pre>
   </div>
-
-  <div id="demo">
-  </div>
-
 <script type="text/javascript" src="docs.js"></script></body>
 </html>

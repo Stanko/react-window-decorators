@@ -11,7 +11,7 @@ If you are not sure what it does, play with the
 
 All modern browsers and IE10+.
 
-* You need to pass breakpoint data (check below).
+\* You need to pass breakpoint data (check below).
 
 ## Usage
 

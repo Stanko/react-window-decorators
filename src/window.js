@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import WindowManager from './window-manager';
 
-const withWindow = (
-  ComposedComponent,
-  breakpoints = null,
-  debounceTime = 250
-) => class WindowDecorator extends Component {
+const withWindow =
+(breakpoints = null, debounceTime = 250) => (ComposedComponent) => class WindowDecorator extends Component {
   constructor() {
     super();
 

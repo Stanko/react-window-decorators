@@ -85,4 +85,4 @@ const BREAKPOINTS = [
   },
 ];
 
-export default withWindow(withScroll(Demo), BREAKPOINTS);
+export default withWindow(BREAKPOINTS)(withScroll(Demo));

@@ -58,6 +58,9 @@ Accepts optional array with breakpoints data. Each breakpoint object must contai
 a name and media query which will be passed to
 [matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
 
+Second argument is `debounceTime` which determines resize event's debounce time.
+Default is `250`.
+
 ```js
 // Example breakpoints data
 const BREAKPOINTS = [
@@ -110,7 +113,7 @@ class YourComponent extends Component {
   }
 }
 
-export default withWindow(YourComponent, BREAKPOINTS);
+export default withWindow(BREAKPOINTS)(YourComponent);
 ```
 
 Released under [MIT License](LICENSE.md).

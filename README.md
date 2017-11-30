@@ -11,6 +11,8 @@ If you are not sure what it does, play with the
 
 All modern browsers and IE10+.
 
+* You need to pass breakpoint data (check below).
+
 ## Usage
 
 Library is made as ES module, and you should use it with a module bundler (tested with webpack).

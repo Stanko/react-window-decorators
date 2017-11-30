@@ -1,10 +1,10 @@
 {
   "name": "react-window-decorators",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "private": false,
   "license": "MIT",
   "main": "lib/index.js",
-  "description": "",
+  "description": "Two decorators (higher order components) that inject 'window' scroll position, dimensions, orientation and breakpoint to your component's props.",
   "scripts": {
     "build-docs": "rm -rf ./docs && NODE_ENV=\"production\" webpack",
     "build": "rm -rf ./lib && NODE_ENV=\"production\" babel ./src --out-dir ./lib",

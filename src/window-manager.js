@@ -8,15 +8,18 @@ const orientations = {
   PORTRAIT: '(orientation: portrait)',
 };
 
+// ------------------------------------------------
 // CustomEvent polyfill
+// ------------------------------------------------
 if (typeof window !== 'undefined' && typeof window.CustomEvent !== 'function') {
-  const CustomEventPollyfill = function (
-    event,
-    userParams
-  ) {
-    const params = userParams || {};
+  const CustomEventPollyfill = function (event, userParams) {
+    const params = {
+      bubbles: userParams.bubbles || false,
+      cancelable: userParams.cancelable || false,
+      detail: userParams.detail || undefined,
+    };
     const evt = document.createEvent('CustomEvent');
-    evt.initCustomEvent(event, params.bubbles || false, params.cancelable || false, params.detail || undefined);
+    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
     return evt;
   };
 
@@ -25,27 +28,35 @@ if (typeof window !== 'undefined' && typeof window.CustomEvent !== 'function') {
   window.CustomEvent = CustomEventPollyfill;
 }
 
+// ------------------------------------------------
+// Window Manager
+// ------------------------------------------------
 export default class WindowManager {
-  constructor(breakpoints, debounceTime) {
+  constructor(breakpoints, debounceTime = 250) {
     if (typeof window === 'undefined') {
       // Silently return null if it is used on server
       return null;
     }
 
+    // Increase reference count
     instancesCount++;
 
+    // If singleton instance exists, return it rather than creating a new one
     if (instance) {
       return instance;
     }
 
+    // Save singleton instance
     instance = this;
+
+    // Save options
+    this.breakpoints = breakpoints;
+    this.debounceTime = debounceTime;
 
     // Bind handlers
     this.handleResize = this.handleResize.bind(this);
 
-    this.breakpoints = breakpoints;
-    this.debounceTime = debounceTime;
-
+    // Add resize listener
     window.addEventListener('resize', this.handleResize);
   }
 
@@ -53,7 +64,7 @@ export default class WindowManager {
     instancesCount--;
 
     if (instancesCount === 0) {
-      // Clear sinfleton instance
+      // Clear singleton instance
       instance = null;
       // Remove listeners
       window.removeEventListener('resize', this.handleResize);
@@ -74,15 +85,13 @@ export default class WindowManager {
   }
 
   getBreakpoint() {
-    if (!this.breakpoints) {
-      return null;
-    }
-
     let breakpoint = null;
 
-    for (let i = 0; i < this.breakpoints.length; i++) {
-      if (window.matchMedia(this.breakpoints[i].media).matches) {
-        breakpoint = this.breakpoints[i].name;
+    if (this.breakpoints) {
+      for (let i = 0; i < this.breakpoints.length; i++) {
+        if (window.matchMedia(this.breakpoints[i].media).matches) {
+          breakpoint = this.breakpoints[i].name;
+        }
       }
     }
 

@@ -2,7 +2,37 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Loads our component from src for easier development
-import { withScroll, withWindow } from '../../../src/index';
+import { withScroll, withWindow, WindowManager } from '../../../src/index';
+
+
+const BREAKPOINTS = [
+  {
+    name: 'small',
+    media: '(min-width: 0)',
+  },
+  {
+    name: 'medium',
+    media: '(min-width: 600px)',
+  },
+  {
+    name: 'large',
+    media: '(min-width: 1000px)',
+  },
+  {
+    name: 'xlarge',
+    media: '(min-width: 1500px)',
+  },
+  {
+    name: 'xxlarge',
+    media: '(min-width: 2000px)',
+  },
+  {
+    name: 'xxxlarge',
+    media: '(min-width: 2800px)',
+  },
+];
+
+new WindowManager(BREAKPOINTS);
 
 class Demo extends React.Component {
   render() {
@@ -58,31 +88,4 @@ Demo.propTypes = {
   dimensions: PropTypes.object.isRequired,
 };
 
-const BREAKPOINTS = [
-  {
-    name: 'small',
-    media: '(min-width: 0)',
-  },
-  {
-    name: 'medium',
-    media: '(min-width: 600px)',
-  },
-  {
-    name: 'large',
-    media: '(min-width: 1000px)',
-  },
-  {
-    name: 'xlarge',
-    media: '(min-width: 1500px)',
-  },
-  {
-    name: 'xxlarge',
-    media: '(min-width: 2000px)',
-  },
-  {
-    name: 'xxxlarge',
-    media: '(min-width: 2800px)',
-  },
-];
-
-export default withWindow(BREAKPOINTS)(withScroll(Demo));
+export default withWindow(withScroll(Demo));

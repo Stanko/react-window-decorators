@@ -1,6 +1,6 @@
 {
   "name": "react-window-decorators",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "license": "MIT",
   "main": "lib/index.js",
@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "prop-types": "^15.5.8",
-    "window-scroll-manager": "^0.1.2"
+    "window-scroll-manager": "^0.2.1"
   },
   "peerDependencies": {
     "react": "^15.5.4",

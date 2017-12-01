@@ -54,16 +54,25 @@ class YourComponent extends Component {
 export default withScroll(YourComponent);
 ```
 
+
+If you run it on the server, `withScroll` will return `0` as the initial value.
+
 ### `withWindow` decorator
 
-Accepts optional array with breakpoints data. Each breakpoint object must contain
+`withWindow` internally uses `WindowManager` for tracking resize events.
+If you want to use breakpoints feature you need to set it by creating new `WindowManager`
+and passing it array with breakpoints data. Each breakpoint object must contain
 a name and media query which will be passed to
 [matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
 
 Second argument is `debounceTime` which determines resize event's debounce time.
 Default is `250`.
 
+`WindowManager` is a singleton, so this should be done only once *before* using decorator.
+
 ```js
+import { WindowManager } from 'react-window-decorators';
+
 // Example breakpoints data
 const BREAKPOINTS = [
   {
@@ -75,6 +84,10 @@ const BREAKPOINTS = [
     media: '(min-width: 600px)',
   },
 ];
+
+// Set breakpoints data
+// Somewhere in your application bootstrap
+new WindowManager(BREAKPOINTS);
 ```
 
 If you don't pass breakpoints data, `breakpoint` prop will always be null.
@@ -84,7 +97,7 @@ Using decorator syntax (my preferred way).
 ```js
 import { withWindow } from 'react-window-decorators';
 
-@withWindow(BREAKPOINTS)
+@withWindow
 export default class YourComponent extends Component {
   render() {
     return (
@@ -116,6 +129,19 @@ class YourComponent extends Component {
 }
 
 export default withWindow(BREAKPOINTS)(YourComponent);
+```
+
+If you run it on the server, `withWindow` will return these initial values
+
+```js
+{
+  dimensions: {
+    width: 0,
+    height: 0,
+  },
+  breakpoint: null,
+  orientation: null,
+};
 ```
 
 Released under [MIT License](LICENSE.md).

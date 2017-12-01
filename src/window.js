@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import WindowManager from './window-manager';
 
-const withWindow =
-(breakpoints = null, debounceTime = 250) => (ComposedComponent) => class WindowDecorator extends Component {
+const withWindow = (ComposedComponent) => class WindowDecorator extends Component {
   constructor() {
     super();
 
@@ -17,7 +16,7 @@ const withWindow =
 
     // Check for universal rendering
     if (typeof window !== 'undefined') {
-      this.windowManager = new WindowManager(breakpoints, debounceTime);
+      this.windowManager = new WindowManager();
 
       // Initial state
       state.breakpoint = this.windowManager.getBreakpoint();

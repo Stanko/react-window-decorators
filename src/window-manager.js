@@ -41,6 +41,10 @@ export default class WindowManager {
     // Increase reference count
     instancesCount++;
 
+    // Save or update options
+    this.breakpoints = breakpoints;
+    this.debounceTime = debounceTime;
+
     // If singleton instance exists, return it rather than creating a new one
     if (instance) {
       return instance;
@@ -48,10 +52,6 @@ export default class WindowManager {
 
     // Save singleton instance
     instance = this;
-
-    // Save options
-    this.breakpoints = breakpoints;
-    this.debounceTime = debounceTime;
 
     // Bind handlers
     this.handleResize = this.handleResize.bind(this);

@@ -12,6 +12,7 @@ const withWindow = (ComposedComponent) => class WindowDecorator extends Componen
       },
       breakpoint: null,
       orientation: null,
+      isTouchDevice: false,
     };
 
     // Check for universal rendering
@@ -22,6 +23,7 @@ const withWindow = (ComposedComponent) => class WindowDecorator extends Componen
       state.breakpoint = this.windowManager.getBreakpoint();
       state.dimensions = this.windowManager.getDimensions();
       state.orientation = this.windowManager.getOrientation();
+      state.isTouchDevice = this.windowManager.isTouchDevice();
 
       // Bind events
       this.handleWindowResize = this.handleWindowResize.bind(this);
@@ -72,6 +74,7 @@ const withWindow = (ComposedComponent) => class WindowDecorator extends Componen
       breakpoint,
       dimensions,
       orientation,
+      isTouchDevice,
     } = this.state;
 
     return (
@@ -80,6 +83,7 @@ const withWindow = (ComposedComponent) => class WindowDecorator extends Componen
         breakpoint={ breakpoint }
         dimensions={ dimensions }
         orientation={ orientation }
+        isTouchDevice={ isTouchDevice }
       />
     );
   }

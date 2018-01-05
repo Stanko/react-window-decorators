@@ -41,6 +41,7 @@ class Demo extends React.Component {
       breakpoint,
       orientation,
       dimensions,
+      isTouchDevice,
     } = this.props;
 
     return (
@@ -74,6 +75,11 @@ class Demo extends React.Component {
               <td><code>breakpoint</code></td>
               <td>{ breakpoint }</td>
             </tr>
+            <tr>
+              <td><code>withWindow</code></td>
+              <td><code>isTouchDevice</code></td>
+              <td>{ isTouchDevice.toString() }</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -86,6 +92,7 @@ Demo.propTypes = {
   breakpoint: PropTypes.string.isRequired,
   orientation: PropTypes.string.isRequired,
   dimensions: PropTypes.object.isRequired,
+  isTouchDevice: PropTypes.bool.isRequired,
 };
 
 export default withWindow(withScroll(Demo));

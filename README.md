@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/react-window-decorators.svg?style=flat-square)](https://www.npmjs.com/package/react-window-decorators)
 
 Two decorators (higher order components) that inject `window` scroll position,
-dimensions, orientation and breakpoint* to your component's props.
+dimensions, orientation, breakpoint* and `isTouchDevice` to your component's props.
 
 If you are not sure what it does, play with the
 [demo](https://stanko.github.io/react-window-decorators/).
@@ -105,6 +105,7 @@ export default class YourComponent extends Component {
         <div>Window dimensions are: { this.props.dimensions.width }/{ this.props.dimensions.height }</div>
         <div>Window orientation is: { this.props.orientation }</div>
         <div>Window breakpoint is: { this.props.breakpoint }</div>
+        <div>Device is touch enabled: { this.props.isTouchDevice.toString() }</div>
       </div>
     );
   }
@@ -123,12 +124,13 @@ class YourComponent extends Component {
         <div>Window dimensions are: { this.props.dimensions.width }/{ this.props.dimensions.height }</div>
         <div>Window orientation is: { this.props.orientation }</div>
         <div>Window breakpoint is: { this.props.breakpoint }</div>
+        <div>Device is touch enabled: { this.props.isTouchDevice.toString() }</div>
       </div>
     );
   }
 }
 
-export default withWindow(BREAKPOINTS)(YourComponent);
+export default withWindow(YourComponent);
 ```
 
 If you run it on the server, `withWindow` will return these initial values
@@ -141,7 +143,30 @@ If you run it on the server, `withWindow` will return these initial values
   },
   breakpoint: null,
   orientation: null,
+  isTouchDevice: false,
 };
 ```
+
+## Chaining Decorators
+
+```js
+@withWindow
+@withScroll
+export default class YourComponent extends Component {
+  ...
+}
+```
+
+or
+
+```js
+class YourComponent extends Component {
+  ...
+}
+
+export default withWindow(withScroll(Demo));
+```
+
+## License
 
 Released under [MIT License](LICENSE.md).

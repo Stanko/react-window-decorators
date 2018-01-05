@@ -1,3 +1,5 @@
+import isTouchDevice from 'is-touch-device';
+
 const EVENT_NAME = 'window-resize';
 
 let instance = null;
@@ -7,6 +9,8 @@ const orientations = {
   LANDSCAPE: '(orientation: landscape)',
   PORTRAIT: '(orientation: portrait)',
 };
+
+const IS_TOUCH_DEVICE = isTouchDevice();
 
 // ------------------------------------------------
 // CustomEvent polyfill
@@ -96,6 +100,10 @@ export default class WindowManager {
     }
 
     return breakpoint;
+  }
+
+  isTouchDevice() {
+    return IS_TOUCH_DEVICE;
   }
 
   handleResize() {

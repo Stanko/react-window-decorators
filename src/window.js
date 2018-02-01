@@ -35,8 +35,8 @@ const withWindow = (ComposedComponent) => class WindowDecorator extends Componen
 
   componentWillUnmount() {
     // Remove and reset interval/animationFrame
+    cancelAnimationFrame(this.animationFrameRef);
     window.removeEventListener('window-scroll', this.handleWindowResize);
-
     this.windowManager.removeListener();
     this.windowManager = null;
   }
@@ -59,7 +59,8 @@ const withWindow = (ComposedComponent) => class WindowDecorator extends Componen
       newDimensions.width !== dimensions.width ||
       newDimensions.height !== dimensions.height
     ) {
-      requestAnimationFrame(() => {
+      cancelAnimationFrame(this.animationFrameRef);
+      this.animationFrameRef = requestAnimationFrame(() => {
         this.setState({
           breakpoint: newBreakpoint,
           dimensions: newDimensions,

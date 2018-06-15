@@ -13,6 +13,8 @@ All modern browsers and IE10+.
 
 \* You need to pass breakpoint data (check below).
 
+[Changelog](CHANGELOG.md)
+
 ## Usage
 
 Library is made as ES module, and you should use it with a module bundler (tested with webpack).
@@ -29,7 +31,7 @@ export default class YourComponent extends Component {
   render() {
     return (
       <div>
-        Scroll position is: { this.props.scrollPosition }
+        Vertical scroll position is: { this.props.scrollPositionY }
       </div>
     );
   }
@@ -45,7 +47,7 @@ class YourComponent extends Component {
   render() {
     return (
       <div>
-        Scroll position is: { this.props.scrollPosition }
+        Vertical scroll position is: { this.props.scrollPositionY }
       </div>
     );
   }

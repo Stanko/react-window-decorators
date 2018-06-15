@@ -5,14 +5,16 @@ const withScroll = ComposedComponent => class ScrollDecorator extends Component 
   constructor() {
     super();
 
-    let scrollPosition = 0;
+    let scrollPositionX = 0;
+    let scrollPositionY = 0;
 
     // Check for universal rendering
     if (typeof window !== 'undefined') {
       this.scrollManager = new ScrollManager();
 
       // Initial scroll position
-      scrollPosition = this.scrollManager.getScrollPosition();
+      scrollPositionX = this.scrollManager.getScrollPosition().scrollPositionX;
+      scrollPositionY = this.scrollManager.getScrollPosition().scrollPositionY;
 
       // Bind events
       this.handleScrollChange = this.handleScrollChange.bind(this);
@@ -20,7 +22,8 @@ const withScroll = ComposedComponent => class ScrollDecorator extends Component 
     }
 
     this.state = {
-      scrollPosition,
+      scrollPositionX,
+      scrollPositionY,
     };
   }
 
@@ -33,26 +36,35 @@ const withScroll = ComposedComponent => class ScrollDecorator extends Component 
   }
 
   handleScrollChange(e) {
-    const { scrollPosition } = this.state;
-    const newScrollPosition = e.detail.scrollPosition;
+    const {
+      scrollPositionY,
+      scrollPositionX,
+    } = this.state;
+    const newScrollPositionY = e.detail.scrollPositionY;
+    const newScrollPositionX = e.detail.scrollPositionX;
 
     // Update the state only when scroll position is changed
-    if (newScrollPosition !== scrollPosition) {
+    if (newScrollPositionY !== scrollPositionY || newScrollPositionX !== scrollPositionX) {
       requestAnimationFrame(() => {
         this.setState({
-          scrollPosition: newScrollPosition,
+          scrollPositionX: newScrollPositionX,
+          scrollPositionY: newScrollPositionY,
         });
       });
     }
   }
 
   render() {
-    const { scrollPosition } = this.state;
+    const {
+      scrollPositionX,
+      scrollPositionY,
+    } = this.state;
 
     return (
       <ComposedComponent
         { ...this.props }
-        scrollPosition={ scrollPosition }
+        scrollPositionX={ scrollPositionX }
+        scrollPositionY={ scrollPositionY }
       />
     );
   }

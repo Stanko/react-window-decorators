@@ -37,11 +37,12 @@ new WindowManager(BREAKPOINTS);
 class Demo extends React.Component {
   render() {
     const {
-      scrollPosition,
       breakpoint,
-      orientation,
       dimensions,
       isTouchDevice,
+      orientation,
+      scrollPositionX,
+      scrollPositionY,
     } = this.props;
 
     return (
@@ -57,8 +58,13 @@ class Demo extends React.Component {
           <tbody>
             <tr>
               <td><code>withScroll</code></td>
-              <td><code>scrollPosition</code></td>
-              <td>{ scrollPosition }</td>
+              <td><code>scrollPositionY</code></td>
+              <td>{ scrollPositionY }</td>
+            </tr>
+            <tr>
+              <td><code>withScroll</code></td>
+              <td><code>scrollPositionX</code></td>
+              <td>{ scrollPositionX }</td>
             </tr>
             <tr>
               <td><code>withWindow</code></td>
@@ -88,7 +94,8 @@ class Demo extends React.Component {
 }
 
 Demo.propTypes = {
-  scrollPosition: PropTypes.number.isRequired,
+  scrollPositionX: PropTypes.number.isRequired,
+  scrollPositionY: PropTypes.number.isRequired,
   breakpoint: PropTypes.string.isRequired,
   orientation: PropTypes.string.isRequired,
   dimensions: PropTypes.object.isRequired,

@@ -8,6 +8,7 @@
 
 * Updated `window-scroll-manager` version
 
+-----
 
 ### v1.0.0
 

@@ -1,5 +1,14 @@
 # Changelog
 
+### v1.0.1
+
+12.07.2018.
+
+**Updated**
+
+* Updated `window-scroll-manager` version
+
+
 ### v1.0.0
 
 15.06.2018.

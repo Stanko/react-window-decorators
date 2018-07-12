@@ -1,6 +1,6 @@
 {
   "name": "react-window-decorators",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "license": "MIT",
   "main": "lib/index.js",
@@ -12,6 +12,7 @@
     "lint": "eslint ./src/js ./webpack.config.js -f table --ext .js --ext .jsx || true",
     "preview": "rm -rf ./dist && NODE_ENV=\"production\" webpack-dev-server",
     "publish-to-npm": "npm run build && npm publish",
+    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags",
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -45,7 +46,7 @@
   "dependencies": {
     "is-touch-device": "^1.0.1",
     "prop-types": "^15.5.8",
-    "window-scroll-manager": "^1.0.1"
+    "window-scroll-manager": "^1.1.0"
   },
   "peerDependencies": {
     "react": ">=15.5.4",

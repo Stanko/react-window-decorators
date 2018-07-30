@@ -1,5 +1,15 @@
 # Changelog
 
+### v1.0.2
+
+30.07.2018.
+
+**Changed**
+
+* Added `scrollPosition` as an `scrollPositionY` alias for backwards compatibility
+
+-----
+
 ### v1.0.1
 
 12.07.2018.

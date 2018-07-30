@@ -24,6 +24,8 @@ const withScroll = ComposedComponent => class ScrollDecorator extends Component 
     this.state = {
       scrollPositionX,
       scrollPositionY,
+      // Alias for scrollPositionY for backwards compatibility
+      scrollPosition: scrollPositionY,
     };
   }
 
@@ -49,6 +51,8 @@ const withScroll = ComposedComponent => class ScrollDecorator extends Component 
         this.setState({
           scrollPositionX: newScrollPositionX,
           scrollPositionY: newScrollPositionY,
+          // Alias for scrollPositionY for backwards compatibility
+          scrollPosition: newScrollPositionY,
         });
       });
     }
@@ -65,6 +69,8 @@ const withScroll = ComposedComponent => class ScrollDecorator extends Component 
         { ...this.props }
         scrollPositionX={ scrollPositionX }
         scrollPositionY={ scrollPositionY }
+        // Alias for scrollPositionY for backwards compatibility
+        scrollPosition={ scrollPositionY }
       />
     );
   }

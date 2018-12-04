@@ -7,7 +7,7 @@ Two decorators (higher order components) that inject `window` scroll position,
 dimensions, orientation, breakpoint* and `isTouchDevice` to your component's props.
 
 If you are not sure what it does, play with the
-[demo](https://stanko.github.io/react-window-decorators/).
+[demo](https://muffinman.io/react-window-decorators/).
 
 All modern browsers and IE10+.
 

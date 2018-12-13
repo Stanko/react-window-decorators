@@ -46,7 +46,7 @@
   "dependencies": {
     "is-touch-device": "^1.0.1",
     "prop-types": "^15.5.8",
-    "window-scroll-manager": "^1.1.2"
+    "window-scroll-manager": "^1.1.3"
   },
   "peerDependencies": {
     "react": ">=15.5.4",

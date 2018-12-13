@@ -1,5 +1,15 @@
 # Changelog
 
+### v1.0.3
+
+13.12.2018.
+
+**Changed**
+
+* Updated `window-scroll-manager` dependency.
+
+-----
+
 ### v1.0.2
 
 30.07.2018.

@@ -12,32 +12,19 @@ const orientations = {
 
 const IS_TOUCH_DEVICE = isTouchDevice();
 
-// ------------------------------------------------
-// CustomEvent polyfill
-// ------------------------------------------------
-if (typeof window !== 'undefined' && typeof window.CustomEvent !== 'function') {
-  const CustomEventPollyfill = function (event, userParams) {
-    const params = {
-      bubbles: userParams.bubbles || false,
-      cancelable: userParams.cancelable || false,
-      detail: userParams.detail || undefined,
-    };
-    const evt = document.createEvent('CustomEvent');
-    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-    return evt;
-  };
+const isWindowDefined = typeof window === 'undefined';
 
-  CustomEventPollyfill.prototype = window.Event.prototype;
-
-  window.CustomEvent = CustomEventPollyfill;
-}
+// ------------------------------------------------
+// Custom Event detection
+// ------------------------------------------------
+const supportsCustomEvents = isWindowDefined && typeof window.CustomEvent === 'function';
 
 // ------------------------------------------------
 // Window Manager
 // ------------------------------------------------
 export default class WindowManager {
   constructor(breakpoints, debounceTime = 250) {
-    if (typeof window === 'undefined') {
+    if (isWindowDefined) {
       // Silently return null if it is used on server
       return null;
     }
@@ -109,13 +96,20 @@ export default class WindowManager {
   handleResize() {
     clearTimeout(this.timeoutID);
     this.timeoutID = setTimeout(() => {
-      const event = new CustomEvent(EVENT_NAME, {
-        detail: {
-          breakpoint: this.getBreakpoint(),
-          dimensions: this.getDimensions(),
-          orientation: this.getOrientation(),
-        },
-      });
+      let event;
+
+      const detail = {
+        breakpoint: this.getBreakpoint(),
+        dimensions: this.getDimensions(),
+        orientation: this.getOrientation(),
+      };
+
+      if (supportsCustomEvents) {
+        event = new CustomEvent(EVENT_NAME, detail);
+      } else {
+        event = document.createEvent('CustomEvent');
+        event.initCustomEvent(EVENT_NAME, false, false, detail);
+      }
 
       // Dispatch the event.
       window.dispatchEvent(event);

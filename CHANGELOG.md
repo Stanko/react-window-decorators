@@ -1,5 +1,15 @@
 # Changelog
 
+### v1.0.4
+
+14.12.2018.
+
+**Changed**
+
+* Changed how custom event is dispatched.
+
+-----
+
 ### v1.0.3
 
 13.12.2018.

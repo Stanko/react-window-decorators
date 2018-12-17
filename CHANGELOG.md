@@ -1,5 +1,16 @@
 # Changelog
 
+### v1.0.5
+
+17.12.2018.
+
+**Fixed**
+
+* Fixed [the bug](https://github.com/Stanko/react-window-decorators/pull/2) introduced in 1.0.4 that broke SSR.
+
+-----
+
+
 ### v1.0.4
 
 14.12.2018.

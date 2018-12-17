@@ -12,7 +12,7 @@ const orientations = {
 
 const IS_TOUCH_DEVICE = isTouchDevice();
 
-const isWindowDefined = typeof window === 'undefined';
+const isWindowDefined = typeof window !== 'undefined';
 
 // ------------------------------------------------
 // Custom Event detection
@@ -24,7 +24,7 @@ const supportsCustomEvents = isWindowDefined && typeof window.CustomEvent === 'f
 // ------------------------------------------------
 export default class WindowManager {
   constructor(breakpoints, debounceTime = 250) {
-    if (isWindowDefined) {
+    if (!isWindowDefined) {
       // Silently return null if it is used on server
       return null;
     }

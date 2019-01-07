@@ -1,5 +1,16 @@
 # Changelog
 
+### v1.0.6
+
+07.01.2019.
+
+**Fixed**
+
+* Fixed [the bug](https://github.com/Stanko/react-window-decorators/pull/3) with breakpoint data not being broadcasted properly.
+
+-----
+
+
 ### v1.0.5
 
 17.12.2018.

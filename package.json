@@ -1,6 +1,6 @@
 {
   "name": "react-window-decorators",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "license": "MIT",
   "main": "lib/index.js",
@@ -11,7 +11,7 @@
     "build-all": "npm run build && npm run build-docs",
     "lint": "eslint ./src/js ./webpack.config.js -f table --ext .js --ext .jsx || true",
     "preview": "rm -rf ./dist && NODE_ENV=\"production\" webpack-dev-server",
-    "publish-to-npm": "npm run build && npm publish",
+    "prepublish": "npm run build",
     "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags",
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"

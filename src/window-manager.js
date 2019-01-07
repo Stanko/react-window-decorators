@@ -105,7 +105,7 @@ export default class WindowManager {
       };
 
       if (supportsCustomEvents) {
-        event = new CustomEvent(EVENT_NAME, detail);
+        event = new CustomEvent(EVENT_NAME, { detail });
       } else {
         event = document.createEvent('CustomEvent');
         event.initCustomEvent(EVENT_NAME, false, false, detail);

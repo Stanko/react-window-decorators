@@ -16,9 +16,7 @@ const withScroll = ComposedComponent => class ScrollDecorator extends Component 
       scrollPositionX = this.scrollManager.getScrollPosition().scrollPositionX;
       scrollPositionY = this.scrollManager.getScrollPosition().scrollPositionY;
 
-      // Bind events
       this.handleScrollChange = this.handleScrollChange.bind(this);
-      window.addEventListener('window-scroll', this.handleScrollChange);
     }
 
     this.state = {
@@ -27,6 +25,11 @@ const withScroll = ComposedComponent => class ScrollDecorator extends Component 
       // Alias for scrollPositionY for backwards compatibility
       scrollPosition: scrollPositionY,
     };
+  }
+
+  componentDidMount() {
+    // Bind events
+    window.addEventListener('window-scroll', this.handleScrollChange);
   }
 
   componentWillUnmount() {

@@ -24,13 +24,15 @@ const withWindow = (ComposedComponent) => class WindowDecorator extends Componen
       state.dimensions = this.windowManager.getDimensions();
       state.orientation = this.windowManager.getOrientation();
       state.isTouchDevice = this.windowManager.isTouchDevice();
-
-      // Bind events
-      this.handleWindowResize = this.handleWindowResize.bind(this);
-      window.addEventListener('window-resize', this.handleWindowResize);
     }
 
     this.state = state;
+  }
+
+  componentDidMount() {
+    // Bind events
+    this.handleWindowResize = this.handleWindowResize.bind(this);
+    window.addEventListener('window-resize', this.handleWindowResize);
   }
 
   componentWillUnmount() {

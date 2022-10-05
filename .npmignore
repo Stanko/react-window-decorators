@@ -1,8 +1,0 @@
-.DS_STORE
-node_modules
-dist
-docs-src
-docs
-.module-cache
-*.log*
-_nogit

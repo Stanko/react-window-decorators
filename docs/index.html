@@ -1,12 +1,35 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+  <title>React Window Decorators</title>
+
+  <meta name="description" content="">
+
+  <meta property="og:site_name" content="">
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <!-- You probably want to swap domain for your own -->
+  <meta property="og:url" content="https://muffinman.io/react-window-decorators/">
+
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="">
+
+  <!-- Icons -->
+  <!-- You probably want to swap icons for your own -->
+  <link rel="icon" href="https://muffinman.io/favicon/red/icon-32.ico" sizes="any" />
+  <link rel="icon" href="https://muffinman.io/favicon/red/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="https://muffinman.io/favicon/red/icon-180.png" />
+  <link rel="manifest" href="https://muffinman.io/favicon/red/manifest.webmanifest" />
 
   <link rel="stylesheet" href="https://muffinman.io/skyblue/css/skyblue.css">
-  <title>React Window Decorators</title>
-<link href="style.css" rel="stylesheet"></head>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
 <body>
   <div class="header">
     <div class="container">
@@ -25,7 +48,8 @@
     <ul>
       <li>
         <code>withScroll</code> -
-        tracks window scroll and injects <code>scrollPositionX</code> and <code>scrollPositionY</code> prop to your component.
+        tracks window scroll and injects <code>scrollPositionX</code> and <code>scrollPositionY</code> prop to your
+        component.
       </li>
       <li>
         <code>withWindow</code> -
@@ -36,14 +60,15 @@
       <small>* breakpoint configuration must be passed to it</small>
     </ul>
     <p>
-      More detailed readme and documentation are available on <a href="https://github.com/Stanko/react-window-decorators">GitHub</a>.
+      More detailed readme and documentation are available on <a
+        href="https://github.com/Stanko/react-window-decorators">GitHub</a>.
     </p>
     <h3>Demo</h3>
     <p>Try scrollig or resizing your window</p>
     <div class="demo" id="demo">
     </div>
-    <p>Breakpoints data used</p>
-<pre>
+    <p>Breakpoints data used in this demo:</p>
+    <pre>
 const BREAKPOINTS = [
   {
     name: 'small',
@@ -72,5 +97,8 @@ const BREAKPOINTS = [
 ];
 </pre>
   </div>
-<script type="text/javascript" src="docs.js"></script></body>
+
+  <script src="./build/docs.js"></script>
+</body>
+
 </html>

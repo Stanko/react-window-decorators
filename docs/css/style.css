@@ -1,0 +1,191 @@
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Inter, Arial,
+    "Noto Sans", sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+input {
+  border-radius: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-weight: 400;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* ---------- Styles ---------- */
+
+body {
+  min-height: 200vh;
+}
+
+/* ---------- Styles ---------- */
+
+body {
+  background: #fdfdfd;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 120vh;
+  padding-bottom: 100px;
+}
+
+:root {
+  --main-color: #e54d42;
+  --main-color-dark: #c52d22;
+}
+
+a,
+a:active,
+a:visited,
+a:focus {
+  color: var(--main-color);
+  border-bottom: 1px solid transparent;
+}
+
+a:hover {
+  color: var(--main-color-dark);
+  border-bottom-color: #ddd;
+}
+
+h1 {
+  margin: 1em 0;
+  font-size: 32px;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 1em 0 0.5em;
+}
+
+h2,
+h3,
+h4 {
+  color: var(--main-color);
+}
+
+.container {
+  max-width: 840px;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  border-bottom: 1px solid #ddd;
+}
+
+.header a {
+  display: inline-block;
+  padding: 20px 0;
+  margin-right: 20px;
+  border: none;
+  font-weight: 500;
+}
+
+.table-striped tr:nth-child(odd) > td,
+pre {
+  background: #fafafa;
+}
+
+code {
+  color: #346;
+  font-size: 0.9em;
+  padding: 0;
+  background: none;
+  border: none;
+  font-weight: 500;
+}
+
+table code {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+th,
+td {
+  padding: 10px 20px !important;
+}
+
+.demo {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  width: 100%;
+}
+
+pre {
+  margin-bottom: 100px;
+  color: #346;
+}

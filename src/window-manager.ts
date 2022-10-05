@@ -1,23 +1,25 @@
-import isTouchDevice from 'is-touch-device';
+// @ts-nocheck
+// TODO types
+import isTouchDevice from "is-touch-device";
 
-const EVENT_NAME = 'window-resize';
+const EVENT_NAME = "window-resize";
 
 let instance = null;
 let instancesCount = 0;
 
 const orientations = {
-  LANDSCAPE: '(orientation: landscape)',
-  PORTRAIT: '(orientation: portrait)',
+  LANDSCAPE: "(orientation: landscape)",
+  PORTRAIT: "(orientation: portrait)",
 };
 
 const IS_TOUCH_DEVICE = isTouchDevice();
 
-const isWindowDefined = typeof window !== 'undefined';
+const isWindowDefined = typeof window !== "undefined";
 
 // ------------------------------------------------
 // Custom Event detection
 // ------------------------------------------------
-const supportsCustomEvents = isWindowDefined && typeof window.CustomEvent === 'function';
+const supportsCustomEvents = isWindowDefined && typeof window.CustomEvent === "function";
 
 // ------------------------------------------------
 // Window Manager
@@ -48,7 +50,7 @@ export default class WindowManager {
     this.handleResize = this.handleResize.bind(this);
 
     // Add resize listener
-    window.addEventListener('resize', this.handleResize);
+    window.addEventListener("resize", this.handleResize);
   }
 
   removeListener() {
@@ -58,7 +60,7 @@ export default class WindowManager {
       // Clear singleton instance
       instance = null;
       // Remove listeners
-      window.removeEventListener('resize', this.handleResize);
+      window.removeEventListener("resize", this.handleResize);
     }
   }
 
@@ -70,9 +72,7 @@ export default class WindowManager {
   }
 
   getOrientation() {
-    return window.matchMedia(orientations.LANDSCAPE).matches ?
-      'landscape' :
-      'portrait';
+    return window.matchMedia(orientations.LANDSCAPE).matches ? "landscape" : "portrait";
   }
 
   getBreakpoint() {
@@ -107,7 +107,7 @@ export default class WindowManager {
       if (supportsCustomEvents) {
         event = new CustomEvent(EVENT_NAME, { detail });
       } else {
-        event = document.createEvent('CustomEvent');
+        event = document.createEvent("CustomEvent");
         event.initCustomEvent(EVENT_NAME, false, false, detail);
       }
 

@@ -1,51 +1,36 @@
 {
   "name": "react-window-decorators",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
   "description": "Two decorators (higher order components) that inject 'window' scroll position, dimensions, orientation and breakpoint to your component's props.",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
   "scripts": {
-    "build-docs": "rm -rf ./docs && NODE_ENV=\"production\" webpack",
-    "build": "rm -rf ./lib && NODE_ENV=\"production\" babel ./src --out-dir ./lib",
-    "build-all": "npm run build && npm run build-docs",
-    "lint": "eslint ./src/js ./webpack.config.js -f table --ext .js --ext .jsx || true",
-    "preview": "rm -rf ./dist && NODE_ENV=\"production\" webpack-dev-server",
-    "prepublish": "npm run build",
-    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags",
-    "start": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "build:esm": "tsc -p tsconfig.json && echo '{ \"type\": \"module\" }' > dist/esm/package.json",
+    "build:cjs": "tsc -p tsconfig-cjs.json && echo '{ \"type\": \"commonjs\" }' > dist/cjs/package.json",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:docs",
+    "start": "esbuild docs/src/docs.tsx --bundle --tsconfig=tsconfig-demo.json --servedir=docs --outdir=docs/build",
+    "build:docs": "esbuild docs/src/docs.tsx --bundle --tsconfig=tsconfig-demo.json --outdir=docs/build --minify --sourcemap",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.5.0",
-    "babel-runtime": "^6.26.0",
-    "css-loader": "^0.28.7",
-    "eslint": "^4.7.0",
-    "eslint-config-airbnb": "^15.1.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.3.0",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^0.11.2",
-    "html-loader": "^0.5.1",
-    "html-webpack-plugin": "^2.30.1",
-    "node-sass": "^7.0.0",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-hot-loader": "^3.0.0-beta.7",
-    "sass-loader": "^6.0.5",
-    "style-loader": "^0.18.2",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2"
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "esbuild": "^0.15.10",
+    "typescript": "^4.8.4"
   },
   "dependencies": {
     "is-touch-device": "^1.0.1",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.8.1",
     "window-scroll-manager": "^1.1.4"
   },
   "peerDependencies": {
@@ -63,5 +48,9 @@
   "bugs": {
     "url": "https://github.com/Stanko/react-window-decorators/issues"
   },
-  "homepage": "https://github.com/Stanko/react-window-decorators#readme"
+  "homepage": "https://github.com/Stanko/react-window-decorators#readme",
+  "files": [
+    "dist/",
+    "CHANGELOG.md"
+  ]
 }

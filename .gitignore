@@ -5,3 +5,6 @@ dist
 *.log*
 _nogit
 lib
+.cache
+.parcel-cache
+TODO.md
